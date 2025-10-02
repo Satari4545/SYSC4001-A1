@@ -19,9 +19,10 @@ int main(int argc, char** argv) {
     std::string execution;  //!< string to accumulate the execution output
 
     /******************ADD YOUR VARIABLES HERE*************************/
-
-
-
+    
+    int current_time = 0;           // Track current simulation time
+    int context_save_time = 10;     // Time to save/restore context
+    
     /******************************************************************/
 
     //parse each line of the input trace file
@@ -29,9 +30,8 @@ int main(int argc, char** argv) {
         auto [activity, duration_intr] = parse_trace(trace);
 
         /******************ADD YOUR SIMULATION CODE HERE*************************/
-
-
-
+        
+       
         /************************************************************************/
 
     }
