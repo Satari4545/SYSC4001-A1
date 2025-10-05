@@ -38,8 +38,7 @@ int main(int argc, char** argv) {
 
         // if activity is CPU 
         if (activity == "CPU") {
-            execution += std::to_string(time) + ", " + std::to_string(duration_intr) + 
-                        ", CPU Burst\n";
+            execution += std::to_string(time) + ", " + std::to_string(duration_intr) + ", CPU Burst\n";
             time += duration_intr;
         }
         // if activity is SYSCALL
@@ -53,19 +52,25 @@ int main(int argc, char** argv) {
 
             // Run the device driver
             execution += std::to_string(time) + ", " + std::to_string(40) + 
-                        ", SYSCALL: run the ISR (device driver)\n";
+            ", SYSCALL: run the ISR (device driver)\n";
             time += 40;
 
             // Transfer data between device and memory
             execution += std::to_string(time) + ", " + std::to_string(40) + 
-                        ", transfer data from device to memory\n";
+            ", transfer data from device to memory\n";
             time += 40;
-
+            
             // Check for errors 
             int remaining_time = delays[device_id] - 80;
             execution += std::to_string(time) + ", " + std::to_string(remaining_time) + 
-                        ", check for errors\n";
+            ", check for errors\n";
             time += remaining_time;
+
+            // IRET to return from interrupt
+            execution += std::to_string(time) + ", " + std::to_string(1) + 
+            ", IRET\n";
+            time += 1;
+
         }
         // if activity is END_IO
         else if (activity == "END_IO") {
@@ -78,14 +83,19 @@ int main(int argc, char** argv) {
 
             // Run the device driver
             execution += std::to_string(time) + ", " + std::to_string(40) + 
-                        ", ENDIO: run the ISR (device driver)\n";
+            ", ENDIO: run the ISR (device driver)\n";
             time += 40;
 
             // Check device status 
             int remaining_time = delays[device_id] - 40;
             execution += std::to_string(time) + ", " + std::to_string(remaining_time) + 
-                        ", check device status\n";
+            ", check device status\n";
             time += remaining_time;
+
+            // IRET to return from interrupt
+            execution += std::to_string(time) + ", " + std::to_string(1) + 
+            ", IRET\n";
+            time += 1;
         }
         
         /************************************************************************/
