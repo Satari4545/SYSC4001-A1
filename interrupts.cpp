@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     
     int time = 0;
     int context_time = 10;
-    
+
     /******************************************************************/
 
     //parse each line of the input trace file
@@ -67,8 +67,7 @@ int main(int argc, char** argv) {
             time += remaining_time;
 
             // IRET to return from interrupt
-            execution += std::to_string(time) + ", " + std::to_string(1) + 
-            ", IRET\n";
+            execution += std::to_string(time) + ", " + std::to_string(1) + ", IRET\n";
             time += 1;
 
         }
@@ -93,8 +92,7 @@ int main(int argc, char** argv) {
             time += remaining_time;
 
             // IRET to return from interrupt
-            execution += std::to_string(time) + ", " + std::to_string(1) + 
-            ", IRET\n";
+            execution += std::to_string(time) + ", " + std::to_string(1) + ", IRET\n";
             time += 1;
         }
         
